@@ -8,9 +8,9 @@ const T = {
   card:     "#FFFFFF",
   border:   "#DDE2EF",
   borderHi: "#C8D0E8",
-  text:     "#1A1F2E",
-  muted:    "#374151",
-  dim:      "#6B7280",
+  text:     "#1c1d1f",
+  muted:    "#1c1d1f",
+  dim:      "#6a6f73",
 
   r:  "#C8273E", rl: "#C8273E14",
   a:  "#B06010", al: "#B0601014",
@@ -238,14 +238,14 @@ function DistVisual() {
         { style: "ALL", desc: "Full copy everywhere", col: T.a, rows: ["dim_1", "dim_2", "dim_1", "dim_2"] },
       ].map(({ style, desc, col, rows }) => (
         <div key={style} style={{ flex: 1, minWidth: 100, background: T.surface, border: `0.5px solid ${col}44`, borderRadius: 8, padding: "8px 10px" }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: col, marginBottom: 3 }}>{style}</div>
-          <div style={{ fontSize: 9, color: T.muted, marginBottom: 6 }}>{desc}</div>
+          <div style={{ fontSize: 14, fontWeight: 700, color: col, marginBottom: 3 }}>{style}</div>
+          <div style={{ fontSize: 12, color: T.muted, marginBottom: 6 }}>{desc}</div>
           <div style={{ display: "flex", gap: 4, justifyContent: "center" }}>
             {[0, 1].map(node => (
-              <div key={node} style={{ background: T.card, border: `0.5px solid ${T.border}`, borderRadius: 5, padding: "4px 6px", fontSize: 9 }}>
+              <div key={node} style={{ background: T.card, border: `0.5px solid ${T.border}`, borderRadius: 5, padding: "4px 6px", fontSize: 12 }}>
                 <div style={{ color: T.muted, marginBottom: 2 }}>Node {node + 1}</div>
                 {rows.slice(node * 2, node * 2 + 2).map((r, i) => (
-                  <div key={i} style={{ background: col + "22", color: col, borderRadius: 3, padding: "1px 4px", fontSize: 8, marginBottom: 1 }}>{r}</div>
+                  <div key={i} style={{ background: col + "22", color: col, borderRadius: 3, padding: "1px 4px", fontSize: 12, marginBottom: 1 }}>{r}</div>
                 ))}
               </div>
             ))}
@@ -259,16 +259,16 @@ function DistVisual() {
 function KafkaVisual() {
   return (
     <div style={{ marginTop: 8, background: T.surface, border: `0.5px solid ${T.border}`, borderRadius: 8, padding: "10px 12px" }}>
-      <div style={{ fontSize: 10, color: T.muted, marginBottom: 6 }}>Topic with 3 partitions · 2 consumer groups</div>
+      <div style={{ fontSize: 13, color: T.muted, marginBottom: 6 }}>Topic with 3 partitions · 2 consumer groups</div>
       <div style={{ display: "flex", gap: 6, marginBottom: 8 }}>
         {[0, 1, 2].map(p => (
           <div key={p} style={{ flex: 1, background: T.card, borderRadius: 6, padding: "6px 8px" }}>
-            <div style={{ fontSize: 9, color: T.r, fontWeight: 600, marginBottom: 4 }}>Partition {p}</div>
+            <div style={{ fontSize: 12, color: T.r, fontWeight: 600, marginBottom: 4 }}>Partition {p}</div>
             <div style={{ display: "flex", gap: 2 }}>
               {[0, 1, 2, 3].map(o => (
-                <div key={o} style={{ width: 20, height: 16, background: T.r + "22", border: `0.5px solid ${T.r}44`, borderRadius: 3, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 8, color: T.r }}>{o}</div>
+                <div key={o} style={{ width: 20, height: 16, background: T.r + "22", border: `0.5px solid ${T.r}44`, borderRadius: 3, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: T.r }}>{o}</div>
               ))}
-              <div style={{ width: 20, height: 16, background: T.r + "11", border: `0.5px dashed ${T.r}33`, borderRadius: 3, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 8, color: T.muted }}>...</div>
+              <div style={{ width: 20, height: 16, background: T.r + "11", border: `0.5px dashed ${T.r}33`, borderRadius: 3, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: T.muted }}>...</div>
             </div>
           </div>
         ))}
@@ -276,10 +276,10 @@ function KafkaVisual() {
       <div style={{ display: "flex", gap: 6 }}>
         {["Group A", "Group B"].map((g, gi) => (
           <div key={g} style={{ flex: 1, background: T.card, borderRadius: 6, padding: "6px 8px" }}>
-            <div style={{ fontSize: 9, color: gi === 0 ? T.g : T.b, fontWeight: 600, marginBottom: 3 }}>{g}</div>
+            <div style={{ fontSize: 12, color: gi === 0 ? T.g : T.b, fontWeight: 600, marginBottom: 3 }}>{g}</div>
             <div style={{ display: "flex", gap: 3 }}>
               {[0, 1, 2].map(p => (
-                <div key={p} style={{ fontSize: 8, color: T.muted, background: T.surface, borderRadius: 3, padding: "2px 5px" }}>P{p}→C{(p + gi) % 2}</div>
+                <div key={p} style={{ fontSize: 12, color: T.muted, background: T.surface, borderRadius: 3, padding: "2px 5px" }}>P{p}→C{(p + gi) % 2}</div>
               ))}
             </div>
           </div>
@@ -298,11 +298,11 @@ function PartitionVisual() {
   ];
   return (
     <div style={{ marginTop: 8, background: T.surface, borderRadius: 8, padding: "10px 12px" }}>
-      <div style={{ fontSize: 9, color: T.muted, marginBottom: 6 }}>Query: WHERE year=2024 AND month=01 — scans only 12MB ✓</div>
+      <div style={{ fontSize: 12, color: T.muted, marginBottom: 6 }}>Query: WHERE year=2024 AND month=01 — scans only 12MB ✓</div>
       {parts.map(({ path, size, color }, i) => (
         <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "4px 8px", marginBottom: 3, background: i === 0 ? color + "18" : T.card, border: `0.5px solid ${i === 0 ? color : T.border}`, borderRadius: 5 }}>
-          <div style={{ fontSize: 9, color: i === 0 ? color : T.muted, fontFamily: "monospace" }}>{path}</div>
-          <div style={{ fontSize: 9, color: i === 0 ? color : T.dim }}>{i === 0 ? "✓ SCANNED" : "✗ SKIPPED"} · {size}</div>
+          <div style={{ fontSize: 12, color: i === 0 ? color : T.muted, fontFamily: "monospace" }}>{path}</div>
+          <div style={{ fontSize: 12, color: i === 0 ? color : T.dim }}>{i === 0 ? "✓ SCANNED" : "✗ SKIPPED"} · {size}</div>
         </div>
       ))}
     </div>
@@ -316,19 +316,19 @@ function AppFlowVisual() {
     <div style={{ marginTop: 8, display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
         {sources.map(s => (
-          <div key={s} style={{ background: T.a + "18", border: `0.5px solid ${T.a}44`, borderRadius: 5, padding: "4px 8px", fontSize: 9, color: T.a }}>{s}</div>
+          <div key={s} style={{ background: T.a + "18", border: `0.5px solid ${T.a}44`, borderRadius: 5, padding: "4px 8px", fontSize: 12, color: T.a }}>{s}</div>
         ))}
       </div>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: 1, gap: 3 }}>
-        <div style={{ fontSize: 9, color: T.muted }}>AppFlow</div>
-        <div style={{ background: T.a + "22", border: `1px solid ${T.a}55`, borderRadius: 6, padding: "6px 12px", fontSize: 9, color: T.a, textAlign: "center" }}>
+        <div style={{ fontSize: 12, color: T.muted }}>AppFlow</div>
+        <div style={{ background: T.a + "22", border: `1px solid ${T.a}55`, borderRadius: 6, padding: "6px 12px", fontSize: 12, color: T.a, textAlign: "center" }}>
           Map → Filter → Mask
         </div>
-        <div style={{ fontSize: 9, color: T.muted }}>+ KMS encrypt</div>
+        <div style={{ fontSize: 12, color: T.muted }}>+ KMS encrypt</div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
         {dests.map(d => (
-          <div key={d} style={{ background: T.g + "18", border: `0.5px solid ${T.g}44`, borderRadius: 5, padding: "4px 8px", fontSize: 9, color: T.g }}>{d}</div>
+          <div key={d} style={{ background: T.g + "18", border: `0.5px solid ${T.g}44`, borderRadius: 5, padding: "4px 8px", fontSize: 12, color: T.g }}>{d}</div>
         ))}
       </div>
     </div>
@@ -338,22 +338,22 @@ function AppFlowVisual() {
 function TimestreamVisual() {
   return (
     <div style={{ marginTop: 8, background: T.surface, borderRadius: 8, padding: "10px 12px" }}>
-      <div style={{ fontSize: 9, color: T.muted, marginBottom: 6 }}>IoT sensor data · auto-tiered by age</div>
+      <div style={{ fontSize: 12, color: T.muted, marginBottom: 6 }}>IoT sensor data · auto-tiered by age</div>
       <div style={{ display: "flex", gap: 6 }}>
         <div style={{ flex: 1, background: T.c + "18", border: `0.5px solid ${T.c}55`, borderRadius: 6, padding: "8px 10px" }}>
-          <div style={{ fontSize: 10, color: T.c, fontWeight: 600 }}>In-Memory</div>
-          <div style={{ fontSize: 9, color: T.muted, marginTop: 2 }}>Last 24h · fast reads</div>
+          <div style={{ fontSize: 13, color: T.c, fontWeight: 600 }}>In-Memory</div>
+          <div style={{ fontSize: 12, color: T.muted, marginTop: 2 }}>Last 24h · fast reads</div>
           <div style={{ marginTop: 6, display: "flex", flexDirection: "column", gap: 2 }}>
             {["temp=72.1°", "temp=72.3°", "temp=71.9°"].map((r, i) => (
-              <div key={i} style={{ background: T.c + "22", borderRadius: 3, padding: "2px 6px", fontSize: 9, color: T.c, fontFamily: "monospace" }}>{r}</div>
+              <div key={i} style={{ background: T.c + "22", borderRadius: 3, padding: "2px 6px", fontSize: 12, color: T.c, fontFamily: "monospace" }}>{r}</div>
             ))}
           </div>
         </div>
-        <div style={{ display: "flex", alignItems: "center", fontSize: 14, color: T.muted }}>→</div>
+        <div style={{ display: "flex", alignItems: "center", fontSize: 17, color: T.muted }}>→</div>
         <div style={{ flex: 1, background: T.surface, border: `0.5px solid ${T.border}`, borderRadius: 6, padding: "8px 10px" }}>
-          <div style={{ fontSize: 10, color: T.muted, fontWeight: 600 }}>Magnetic Store</div>
-          <div style={{ fontSize: 9, color: T.dim, marginTop: 2 }}>Older data · compressed</div>
-          <div style={{ marginTop: 6, fontSize: 9, color: T.dim }}>Months of historical data at low cost — queried same SQL API</div>
+          <div style={{ fontSize: 13, color: T.muted, fontWeight: 600 }}>Magnetic Store</div>
+          <div style={{ fontSize: 12, color: T.dim, marginTop: 2 }}>Older data · compressed</div>
+          <div style={{ marginTop: 6, fontSize: 12, color: T.dim }}>Months of historical data at low cost — queried same SQL API</div>
         </div>
       </div>
     </div>
@@ -382,7 +382,7 @@ function GenericVisual({ type, accent }) {
     tsinflux: "Existing InfluxDB → Timestream for LiveAnalytics. Supports line protocol + Flux queries natively.",
   };
   return (
-    <div style={{ marginTop: 8, background: T.surface, border: `0.5px solid ${accent}33`, borderRadius: 8, padding: "10px 12px", fontSize: 10, color: T.muted, lineHeight: 1.6, fontFamily: "monospace" }}>
+    <div style={{ marginTop: 8, background: T.surface, border: `0.5px solid ${accent}33`, borderRadius: 8, padding: "10px 12px", fontSize: 13, color: T.muted, lineHeight: 1.6, fontFamily: "monospace" }}>
       {content[type] || "Visual unavailable"}
     </div>
   );
@@ -412,18 +412,18 @@ function ConceptCard({ concept, accent, idx }) {
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <div style={{ width: 22, height: 22, borderRadius: 6, background: accent + "22", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, color: accent, flexShrink: 0 }}>{idx + 1}</div>
-          <div style={{ fontSize: 13, fontWeight: 500, color: T.text }}>{concept.title}</div>
+          <div style={{ width: 22, height: 22, borderRadius: 6, background: accent + "22", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: accent, flexShrink: 0 }}>{idx + 1}</div>
+          <div style={{ fontSize: 16, fontWeight: 500, color: T.text }}>{concept.title}</div>
         </div>
-        <div style={{ fontSize: 12, color: T.muted, transition: "transform .2s", transform: open ? "rotate(180deg)" : "none" }}>▾</div>
+        <div style={{ fontSize: 15, color: T.muted, transition: "transform .2s", transform: open ? "rotate(180deg)" : "none" }}>▾</div>
       </div>
       {open && (
         <div style={{ marginTop: 12 }}>
-          <div style={{ fontSize: 12, color: T.muted, lineHeight: 1.7, marginBottom: 10 }}>{concept.detail}</div>
+          <div style={{ fontSize: 15, color: T.muted, lineHeight: 1.7, marginBottom: 10 }}>{concept.detail}</div>
           <ConceptVisual type={concept.visual} accent={accent} />
           <div style={{ marginTop: 10, background: accent + "15", border: `0.5px solid ${accent}44`, borderRadius: 7, padding: "8px 11px" }}>
-            <div style={{ fontSize: 10, fontWeight: 600, color: accent, marginBottom: 3 }}>💡 EXAM TIP</div>
-            <div style={{ fontSize: 11, color: accent + "cc", lineHeight: 1.6 }}>{concept.exam}</div>
+            <div style={{ fontSize: 13, fontWeight: 600, color: accent, marginBottom: 3 }}>💡 EXAM TIP</div>
+            <div style={{ fontSize: 14, color: accent + "cc", lineHeight: 1.6 }}>{concept.exam}</div>
           </div>
         </div>
       )}
@@ -441,8 +441,8 @@ function ProgressBar() {
   return (
     <div style={{ background: T.card, border: `0.5px solid ${T.border}`, borderRadius: 12, padding: "14px 16px", marginBottom: 14 }}>
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-        <div style={{ fontSize: 12, fontWeight: 600, color: T.text }}>Study progress</div>
-        <div style={{ fontSize: 20, fontWeight: 700, color: pct > 80 ? T.g : pct > 40 ? T.a : T.r }}>{pct}%</div>
+        <div style={{ fontSize: 15, fontWeight: 600, color: T.text }}>Study progress</div>
+        <div style={{ fontSize: 22, fontWeight: 700, color: pct > 80 ? T.g : pct > 40 ? T.a : T.r }}>{pct}%</div>
       </div>
       <div style={{ height: 6, borderRadius: 3, background: T.surface, overflow: "hidden", marginBottom: 10 }}>
         <div style={{ width: `${pct}%`, height: "100%", background: pct > 80 ? T.g : pct > 40 ? T.a : T.r, borderRadius: 3, transition: "width .4s" }} />
@@ -451,7 +451,7 @@ function ProgressBar() {
         {TOPICS.map(t => {
           const topicDone = t.concepts.filter((_, ci) => checked[`${t.id}-${ci}`]).length;
           return (
-            <div key={t.id} style={{ display: "flex", align: "center", gap: 4, fontSize: 10 }}>
+            <div key={t.id} style={{ display: "flex", align: "center", gap: 4, fontSize: 13 }}>
               {t.concepts.map((_, ci) => (
                 <div
                   key={ci}
@@ -459,12 +459,12 @@ function ProgressBar() {
                   style={{ width: 12, height: 12, borderRadius: 3, background: checked[`${t.id}-${ci}`] ? t.accent : T.surface, border: `0.5px solid ${checked[`${t.id}-${ci}`] ? t.accent : T.border}`, cursor: "pointer", transition: "all .15s" }}
                 />
               ))}
-              <span style={{ color: T.muted, marginLeft: 2, fontSize: 9 }}>{t.name.split(" ").pop()}</span>
+              <span style={{ color: T.muted, marginLeft: 2, fontSize: 12 }}>{t.name.split(" ").pop()}</span>
             </div>
           );
         })}
       </div>
-      <div style={{ fontSize: 9, color: T.dim, marginTop: 6 }}>Click squares to mark concepts done · {done}/{total} concepts complete</div>
+      <div style={{ fontSize: 12, color: T.dim, marginTop: 6 }}>Click squares to mark concepts done · {done}/{total} concepts complete</div>
     </div>
   );
 }
@@ -499,14 +499,14 @@ function Timeline() {
     <div>
       {weeks.map(({ week, col, days }) => (
         <div key={week} style={{ marginBottom: 16 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: col, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>{week}</div>
+          <div style={{ fontSize: 14, fontWeight: 700, color: col, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>{week}</div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
             {days.map(({ day, topic, items }) => (
               <div key={day} style={{ background: T.card, border: `0.5px solid ${col}44`, borderRadius: 10, padding: "12px 14px" }}>
-                <div style={{ fontSize: 10, color: col, fontWeight: 600, marginBottom: 3 }}>{day}</div>
-                <div style={{ fontSize: 12, fontWeight: 500, color: T.text, marginBottom: 8 }}>{topic}</div>
+                <div style={{ fontSize: 13, color: col, fontWeight: 600, marginBottom: 3 }}>{day}</div>
+                <div style={{ fontSize: 15, fontWeight: 500, color: T.text, marginBottom: 8 }}>{topic}</div>
                 {items.map((item, i) => (
-                  <div key={i} style={{ display: "flex", gap: 6, marginBottom: 4, fontSize: 11, color: T.muted, lineHeight: 1.4 }}>
+                  <div key={i} style={{ display: "flex", gap: 6, marginBottom: 4, fontSize: 14, color: T.muted, lineHeight: 1.4 }}>
                     <div style={{ width: 5, height: 5, borderRadius: "50%", background: col, flexShrink: 0, marginTop: 4 }} />
                     {item}
                   </div>
@@ -541,11 +541,11 @@ function CheatSheet() {
   ];
   return (
     <div>
-      <div style={{ fontSize: 11, color: T.muted, marginBottom: 10 }}>Scenario → correct answer flashcards. Cover the right column and test yourself.</div>
+      <div style={{ fontSize: 14, color: T.muted, marginBottom: 10 }}>Scenario → correct answer flashcards. Cover the right column and test yourself.</div>
       {tips.map(({ q, a, col }, i) => (
         <div key={i} style={{ display: "flex", gap: 0, marginBottom: 5, borderRadius: 8, overflow: "hidden", border: `0.5px solid ${T.border}` }}>
-          <div style={{ flex: 3, padding: "9px 12px", background: T.surface, fontSize: 11, color: T.text, lineHeight: 1.4 }}>{q}</div>
-          <div style={{ flex: 2, padding: "9px 12px", background: col + "18", fontSize: 11, color: col, lineHeight: 1.4, borderLeft: `0.5px solid ${col}33` }}>{a}</div>
+          <div style={{ flex: 3, padding: "9px 12px", background: T.surface, fontSize: 14, color: T.text, lineHeight: 1.4 }}>{q}</div>
+          <div style={{ flex: 2, padding: "9px 12px", background: col + "18", fontSize: 14, color: col, lineHeight: 1.4, borderLeft: `0.5px solid ${col}33` }}>{a}</div>
         </div>
       ))}
     </div>
@@ -570,8 +570,8 @@ export default function StudyPlan() {
 
       {/* Header */}
       <div style={{ marginBottom: 16 }}>
-        <div style={{ fontSize: 18, fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 3 }}>DEA-C01 Gap Filler</div>
-        <div style={{ fontSize: 11, color: T.muted }}>6 topics · 12 days · your 72% head start</div>
+        <div style={{ fontSize: 21, fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 3 }}>DEA-C01 Gap Filler</div>
+        <div style={{ fontSize: 14, color: T.muted }}>6 topics · 12 days · your 72% head start</div>
       </div>
 
       <ProgressBar />
@@ -584,7 +584,7 @@ export default function StudyPlan() {
             borderColor: activeTab === t.id ? T.b : T.border,
             background: activeTab === t.id ? T.b + "22" : "transparent",
             color: activeTab === t.id ? T.b : T.muted,
-            fontSize: 11, fontWeight: 500, cursor: "pointer", letterSpacing: "0.02em"
+            fontSize: 14, fontWeight: 500, cursor: "pointer", letterSpacing: "0.02em"
           }}>{t.label}</button>
         ))}
       </div>
@@ -601,10 +601,10 @@ export default function StudyPlan() {
                 borderColor: activeTopic === t.id ? t.accent : T.border,
                 background: activeTopic === t.id ? t.accent + "22" : T.surface,
                 color: activeTopic === t.id ? t.accent : T.muted,
-                fontSize: 11, fontWeight: 500, cursor: "pointer"
+                fontSize: 14, fontWeight: 500, cursor: "pointer"
               }}>
                 <span>{t.icon}</span><span>{t.name.split(" ").slice(-1)[0]}</span>
-                <span style={{ fontSize: 9, background: t.accent + "33", borderRadius: 3, padding: "1px 4px" }}>{t.days}d</span>
+                <span style={{ fontSize: 12, background: t.accent + "33", borderRadius: 3, padding: "1px 4px" }}>{t.days}d</span>
               </button>
             ))}
           </div>
@@ -616,20 +616,20 @@ export default function StudyPlan() {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 6 }}>
                   <div>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                      <div style={{ fontSize: 20, color: topic.accent }}>{topic.icon}</div>
-                      <div style={{ fontSize: 16, fontWeight: 700, color: T.text }}>{topic.name}</div>
+                      <div style={{ fontSize: 22, color: topic.accent }}>{topic.icon}</div>
+                      <div style={{ fontSize: 19, fontWeight: 700, color: T.text }}>{topic.name}</div>
                     </div>
-                    <div style={{ fontSize: 10, color: topic.accent, background: topic.accent + "18", borderRadius: 5, padding: "2px 8px", display: "inline-block", marginBottom: 6 }}>{topic.tag}</div>
-                    <div style={{ fontSize: 11, color: T.muted, lineHeight: 1.6 }}>{topic.why}</div>
+                    <div style={{ fontSize: 13, color: topic.accent, background: topic.accent + "18", borderRadius: 5, padding: "2px 8px", display: "inline-block", marginBottom: 6 }}>{topic.tag}</div>
+                    <div style={{ fontSize: 14, color: T.muted, lineHeight: 1.6 }}>{topic.why}</div>
                   </div>
                   <div style={{ background: topic.accent + "22", borderRadius: 8, padding: "10px 14px", textAlign: "center", flexShrink: 0 }}>
-                    <div style={{ fontSize: 24, fontWeight: 700, color: topic.accent }}>{topic.days}</div>
-                    <div style={{ fontSize: 9, color: topic.accent + "99" }}>days</div>
+                    <div style={{ fontSize: 26, fontWeight: 700, color: topic.accent }}>{topic.days}</div>
+                    <div style={{ fontSize: 12, color: topic.accent + "99" }}>days</div>
                   </div>
                 </div>
               </div>
 
-              <div style={{ fontSize: 10, fontWeight: 600, color: T.muted, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>
+              <div style={{ fontSize: 13, fontWeight: 600, color: T.muted, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>
                 {topic.concepts.length} concepts — tap each to expand
               </div>
               {topic.concepts.map((c, i) => (

@@ -97,10 +97,10 @@ export default function App() {
 
         {/* Brand name */}
         <div>
-          <div style={{ fontSize: 16, fontWeight: 700, color: '#F8FAFC', letterSpacing: '-0.3px', lineHeight: 1.2 }}>
+          <div style={{ fontSize: 18, fontWeight: 700, color: '#F8FAFC', letterSpacing: '-0.3px', lineHeight: 1.2 }}>
             DEA Learning
           </div>
-          <div style={{ fontSize: 11, color: '#7DD3FC', letterSpacing: '0.15px', lineHeight: 1.3, marginTop: 1 }}>
+          <div style={{ fontSize: 14, color: '#7DD3FC', letterSpacing: '0.15px', lineHeight: 1.3, marginTop: 1 }}>
             AWS Data Engineer Associate · Exam Prep
           </div>
         </div>
@@ -116,7 +116,7 @@ export default function App() {
           display: 'flex', alignItems: 'center', gap: 7,
         }}>
           {active.icon(true)}
-          <span style={{ fontSize: 12, fontWeight: 600, color: active.color }}>{active.label}</span>
+          <span style={{ fontSize: 15, fontWeight: 600, color: active.color }}>{active.label}</span>
         </div>
       </header>
 
@@ -142,7 +142,7 @@ export default function App() {
           {/* Section label */}
           <div style={{
             padding: '22px 20px 10px',
-            fontSize: 10, fontWeight: 700, color: '#94A3B8',
+            fontSize: 13, fontWeight: 700, color: '#94A3B8',
             letterSpacing: '1px', textTransform: 'uppercase',
           }}>
             Learning Modules
@@ -182,13 +182,13 @@ export default function App() {
                   {/* Text */}
                   <div style={{ minWidth: 0 }}>
                     <div style={{
-                      fontSize: 13, fontWeight: 600, lineHeight: 1.3,
+                      fontSize: 16, fontWeight: 600, lineHeight: 1.3,
                       color: isActive ? s.color : '#1E293B',
                     }}>
                       {s.label}
                     </div>
                     <div style={{
-                      fontSize: 11, color: isActive ? `${s.color}99` : '#64748B',
+                      fontSize: 14, color: isActive ? `${s.color}99` : '#64748B',
                       marginTop: 3, lineHeight: 1.45,
                     }}>
                       {s.sub}
@@ -198,7 +198,7 @@ export default function App() {
                       display: 'inline-block', marginTop: 6,
                       background: isActive ? `${s.color}15` : '#F1F5F9',
                       color: isActive ? s.color : '#94A3B8',
-                      fontSize: 10, fontWeight: 600,
+                      fontSize: 13, fontWeight: 600,
                       padding: '2px 8px', borderRadius: 20,
                       letterSpacing: '0.2px',
                     }}>
@@ -221,10 +221,10 @@ export default function App() {
             border: '1px solid #E2E8F0',
             borderRadius: 10,
           }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: '#374151', marginBottom: 6 }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: '#374151', marginBottom: 6 }}>
               DEA-C01 Exam Prep
             </div>
-            <div style={{ fontSize: 10, color: '#6B7280', lineHeight: 1.6 }}>
+            <div style={{ fontSize: 13, color: '#6B7280', lineHeight: 1.6 }}>
               Covers all 4 domains:<br/>
               Ingestion · Storage · Operations · Security
             </div>
@@ -235,7 +235,7 @@ export default function App() {
             }}>
               <div style={{ width: '72%', height: '100%', background: 'linear-gradient(90deg, #2563EB, #7C3AED)', borderRadius: 2 }} />
             </div>
-            <div style={{ fontSize: 10, color: '#94A3B8', marginTop: 4 }}>72% passing score required</div>
+            <div style={{ fontSize: 13, color: '#94A3B8', marginTop: 4 }}>72% passing score required</div>
           </div>
         </aside>
 

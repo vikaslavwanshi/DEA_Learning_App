@@ -11,9 +11,9 @@ const C = {
   card:    "#FFFFFF",
   border:  "#DDE2EF",
   hi:      "#C8D0E8",
-  text:    "#1A1F2E",
-  muted:   "#374151",
-  dim:     "#6B7280",
+  text:    "#1c1d1f",
+  muted:   "#1c1d1f",
+  dim:     "#6a6f73",
 
   b: "#1A6FD4", bl: "#1A6FD414",
   g: "#1A7F52", gl: "#1A7F5214",
@@ -342,7 +342,7 @@ Return ONLY valid JSON array, no markdown, no preamble:
    COMPONENTS
 ═══════════════════════════════════════════════════════ */
 const s = {
-  tag: { fontSize: 9, fontWeight: 700, padding: "2px 7px", borderRadius: 4, letterSpacing: "0.08em", textTransform: "uppercase" },
+  tag: { fontSize: 12, fontWeight: 700, padding: "2px 7px", borderRadius: 4, letterSpacing: "0.08em", textTransform: "uppercase" },
   mono: { fontFamily: "'Courier New', 'Consolas', monospace" },
 };
 
@@ -363,10 +363,10 @@ function OptionButton({ text, idx, selected, correct, revealed, onClick }) {
         background:bg, border:`1px solid ${border}`, cursor:revealed?"default":"pointer",
         transition:"all .15s", marginBottom:6 }}>
       <div style={{ width:22, height:22, borderRadius:5, background:lbg, display:"flex", alignItems:"center",
-        justifyContent:"center", fontSize:10, fontWeight:700, color:col, flexShrink:0 }}>{letters[idx]}</div>
-      <div style={{ fontSize:12, color: revealed ? col : (selected ? C.text : C.muted), lineHeight:1.6, flex:1 }}>{text}</div>
-      {revealed && idx === correct && <div style={{ fontSize:14, flexShrink:0, color:C.g }}>✓</div>}
-      {revealed && selected && idx !== correct && <div style={{ fontSize:14, flexShrink:0, color:C.r }}>✗</div>}
+        justifyContent:"center", fontSize: 13, fontWeight:700, color:col, flexShrink:0 }}>{letters[idx]}</div>
+      <div style={{ fontSize: 15, color: revealed ? col : (selected ? C.text : C.muted), lineHeight:1.6, flex:1 }}>{text}</div>
+      {revealed && idx === correct && <div style={{ fontSize: 17, flexShrink:0, color:C.g }}>✓</div>}
+      {revealed && selected && idx !== correct && <div style={{ fontSize: 17, flexShrink:0, color:C.r }}>✗</div>}
     </div>
   );
 }
@@ -395,7 +395,7 @@ function QuestionCard({ q, qNum, total, onAnswer, answered }) {
       </div>
 
       {/* Question */}
-      <div style={{ padding:"16px 16px 12px", fontSize:13, color:C.text, lineHeight:1.75 }}>{q.q}</div>
+      <div style={{ padding:"16px 16px 12px", fontSize: 16, color:C.text, lineHeight:1.75 }}>{q.q}</div>
 
       {/* Options */}
       <div style={{ padding:"0 16px" }}>
@@ -408,10 +408,10 @@ function QuestionCard({ q, qNum, total, onAnswer, answered }) {
       {/* Explanation */}
       {revealed && (
         <div style={{ margin:"12px 16px", padding:"12px 14px", background:selected===q.answer ? C.g+"0D" : C.r+"0D", borderRadius:8, border:`1px solid ${selected===q.answer ? C.g+"44" : C.r+"33"}` }}>
-          <div style={{ fontSize:10, fontWeight:700, color:selected===q.answer ? C.g : C.r, marginBottom:6, letterSpacing:"0.06em" }}>
+          <div style={{ fontSize: 13, fontWeight:700, color:selected===q.answer ? C.g : C.r, marginBottom:6, letterSpacing:"0.06em" }}>
             {selected===q.answer ? "✓ CORRECT" : "✗ INCORRECT"} — EXPLANATION
           </div>
-          <div style={{ fontSize:12, color:C.muted, lineHeight:1.7 }}>{q.explain}</div>
+          <div style={{ fontSize: 15, color:C.muted, lineHeight:1.7 }}>{q.explain}</div>
         </div>
       )}
 
@@ -423,14 +423,14 @@ function QuestionCard({ q, qNum, total, onAnswer, answered }) {
               borderColor: selected===null ? C.border : C.b,
               background: selected===null ? C.surface : C.b,
               color: selected===null ? C.dim : "#FFFFFF",
-              fontSize:12, fontWeight:600, cursor: selected===null ? "default" : "pointer",
+              fontSize: 15, fontWeight:600, cursor: selected===null ? "default" : "pointer",
               letterSpacing:"0.04em" }}>
             SUBMIT →
           </button>
         ) : (
           <button onClick={answered}
             style={{ padding:"8px 20px", borderRadius:7, border:`1px solid ${C.g}`,
-              background:C.g, color:"#FFFFFF", fontSize:12, fontWeight:600, cursor:"pointer", letterSpacing:"0.04em" }}>
+              background:C.g, color:"#FFFFFF", fontSize: 15, fontWeight:600, cursor:"pointer", letterSpacing:"0.04em" }}>
             NEXT →
           </button>
         )}
@@ -454,24 +454,24 @@ function ScoreCard({ results, questions, onRestart, onReview }) {
   return (
     <div style={{ background:C.card, border:`1px solid ${passed?C.g+"55":C.r+"44"}`, borderRadius:14, overflow:"hidden", boxShadow:`0 4px 20px ${passed?C.g:C.r}14` }}>
       <div style={{ padding:"20px 20px 16px", textAlign:"center", borderBottom:`1px solid ${C.border}`, background:passed?C.g+"08":C.r+"08" }}>
-        <div style={{ fontSize:11, color:C.muted, letterSpacing:"0.1em", marginBottom:8 }}>EXAM RESULT</div>
-        <div style={{ fontSize:64, fontWeight:700, color:passed?C.g:C.r, lineHeight:1, marginBottom:4 }}>{pct}%</div>
-        <div style={{ fontSize:14, color:C.muted, marginBottom:6 }}>{correct} / {total} correct</div>
+        <div style={{ fontSize: 14, color:C.muted, letterSpacing:"0.1em", marginBottom:8 }}>EXAM RESULT</div>
+        <div style={{ fontSize: 64, fontWeight:700, color:passed?C.g:C.r, lineHeight:1, marginBottom:4 }}>{pct}%</div>
+        <div style={{ fontSize: 17, color:C.muted, marginBottom:6 }}>{correct} / {total} correct</div>
         <div style={{ display:"inline-block", padding:"6px 18px", borderRadius:20,
           background: passed ? C.g+"18" : C.r+"14",
           border:`1px solid ${passed?C.g+"55":C.r+"44"}`,
-          color: passed ? C.g : C.r, fontSize:13, fontWeight:700, letterSpacing:"0.08em" }}>
+          color: passed ? C.g : C.r, fontSize: 16, fontWeight:700, letterSpacing:"0.08em" }}>
           {passed ? "EXAM READY" : "KEEP STUDYING"}
         </div>
       </div>
 
       <div style={{ padding:"16px 20px" }}>
-        <div style={{ fontSize:10, color:C.muted, letterSpacing:"0.08em", marginBottom:10 }}>DOMAIN BREAKDOWN</div>
+        <div style={{ fontSize: 13, color:C.muted, letterSpacing:"0.08em", marginBottom:10 }}>DOMAIN BREAKDOWN</div>
         {byDomain.map(dm => (
           <div key={dm.id} style={{ marginBottom:10 }}>
             <div style={{ display:"flex", justifyContent:"space-between", marginBottom:3 }}>
-              <div style={{ fontSize:11, color:dm.col }}>{dm.full}</div>
-              <div style={{ fontSize:11, color:dm.pct>=72?C.g:C.r, fontWeight:600 }}>{dm.pct}% ({dm.correct}/{dm.total})</div>
+              <div style={{ fontSize: 14, color:dm.col }}>{dm.full}</div>
+              <div style={{ fontSize: 14, color:dm.pct>=72?C.g:C.r, fontWeight:600 }}>{dm.pct}% ({dm.correct}/{dm.total})</div>
             </div>
             <div style={{ height:5, borderRadius:3, background:C.surface, overflow:"hidden" }}>
               <div style={{ width:`${dm.pct}%`, height:"100%", background:dm.pct>=72?C.g:C.r, borderRadius:3, transition:"width .5s" }} />
@@ -482,9 +482,9 @@ function ScoreCard({ results, questions, onRestart, onReview }) {
 
       <div style={{ padding:"12px 20px 16px", display:"flex", gap:8, flexWrap:"wrap" }}>
         <button onClick={onReview} style={{ flex:1, padding:"9px 0", borderRadius:8, border:`1px solid ${C.b}`,
-          background:C.b, color:"#FFFFFF", fontSize:12, fontWeight:600, cursor:"pointer" }}>Review answers</button>
+          background:C.b, color:"#FFFFFF", fontSize: 15, fontWeight:600, cursor:"pointer" }}>Review answers</button>
         <button onClick={onRestart} style={{ flex:1, padding:"9px 0", borderRadius:8, border:`1px solid ${C.border}`,
-          background:C.surface, color:C.muted, fontSize:12, fontWeight:600, cursor:"pointer" }}>New exam</button>
+          background:C.surface, color:C.muted, fontSize: 15, fontWeight:600, cursor:"pointer" }}>New exam</button>
       </div>
     </div>
   );
@@ -494,8 +494,8 @@ function ReviewMode({ questions, results, onBack }) {
   return (
     <div>
       <button onClick={onBack} style={{ marginBottom:12, padding:"6px 14px", borderRadius:7, border:`1px solid ${C.border}`,
-        background:C.surface, color:C.muted, fontSize:11, cursor:"pointer" }}>← Back</button>
-      <div style={{ fontSize:11, color:C.muted, marginBottom:12 }}>Review all questions — correct answers highlighted</div>
+        background:C.surface, color:C.muted, fontSize: 14, cursor:"pointer" }}>← Back</button>
+      <div style={{ fontSize: 14, color:C.muted, marginBottom:12 }}>Review all questions — correct answers highlighted</div>
       {questions.map((q, i) => (
         <div key={q.id} style={{ marginBottom:10, background:C.card, border:`1px solid ${results[i]?C.g+"44":C.r+"33"}`,
           borderRadius:10, padding:"14px 16px", boxShadow:"0 1px 4px #1A1F2E0A" }}>
@@ -506,18 +506,18 @@ function ReviewMode({ questions, results, onBack }) {
             </span>
             <DomainTag domain={q.domain} />
           </div>
-          <div style={{ fontSize:12, color:C.text, lineHeight:1.7, marginBottom:10 }}>{q.q}</div>
+          <div style={{ fontSize: 15, color:C.text, lineHeight:1.7, marginBottom:10 }}>{q.q}</div>
           {q.opts.map((opt, idx) => (
             <div key={idx} style={{ display:"flex", gap:8, padding:"6px 10px", borderRadius:6, marginBottom:4,
               background: idx===q.answer ? C.g+"14" : C.surface,
               border:`1px solid ${idx===q.answer ? C.g+"55" : C.border}` }}>
-              <span style={{ fontSize:10, fontWeight:700, color:idx===q.answer?C.g:C.dim, flexShrink:0 }}>
+              <span style={{ fontSize: 13, fontWeight:700, color:idx===q.answer?C.g:C.dim, flexShrink:0 }}>
                 {["A","B","C","D"][idx]}
               </span>
-              <span style={{ fontSize:11, color:idx===q.answer?C.g:C.muted }}>{opt}</span>
+              <span style={{ fontSize: 14, color:idx===q.answer?C.g:C.muted }}>{opt}</span>
             </div>
           ))}
-          <div style={{ marginTop:8, padding:"8px 10px", background:C.surface, border:`1px solid ${C.border}`, borderRadius:7, fontSize:11, color:C.muted, lineHeight:1.6 }}>
+          <div style={{ marginTop:8, padding:"8px 10px", background:C.surface, border:`1px solid ${C.border}`, borderRadius:7, fontSize: 14, color:C.muted, lineHeight:1.6 }}>
             {q.explain}
           </div>
         </div>
@@ -636,7 +636,7 @@ export default function ExamSimulator() {
       <div style={{ width:40, height:40, border:`2px solid ${C.border}`, borderTop:`2px solid ${C.b}`, borderRadius:"50%",
         animation:"spin 0.8s linear infinite" }} />
       <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
-      <div style={{ fontSize:12, color:C.muted }}>{loadMsg}</div>
+      <div style={{ fontSize: 15, color:C.muted }}>{loadMsg}</div>
     </div>
   );
 
@@ -647,12 +647,12 @@ export default function ExamSimulator() {
       {/* Global header */}
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:16, flexWrap:"wrap", gap:8 }}>
         <div>
-          <div style={{ fontSize:16, fontWeight:700, letterSpacing:"-0.01em", color:C.text }}>DEA-C01</div>
-          <div style={{ fontSize:10, color:C.muted, letterSpacing:"0.1em" }}>DATA ENGINEER ASSOCIATE · EXAM SIMULATOR</div>
+          <div style={{ fontSize: 19, fontWeight:700, letterSpacing:"-0.01em", color:C.text }}>DEA-C01</div>
+          <div style={{ fontSize: 13, color:C.muted, letterSpacing:"0.1em" }}>DATA ENGINEER ASSOCIATE · EXAM SIMULATOR</div>
         </div>
         <div style={{ display:"flex", gap:6, alignItems:"center" }}>
           {totalAnswered > 0 && (
-            <div style={{ fontSize:11, color:C.muted, ...s.mono }}>
+            <div style={{ fontSize: 14, color:C.muted, ...s.mono }}>
               <span style={{ color: totalAnswered>0 ? (totalCorrect/totalAnswered>=0.72?C.g:C.r) : C.muted }}>
                 {Math.round(totalCorrect/totalAnswered*100)}%
               </span> overall · {totalAnswered} answered
@@ -660,7 +660,7 @@ export default function ExamSimulator() {
           )}
           {mode !== MODES.HOME && (
             <button onClick={() => setMode(MODES.HOME)} style={{ padding:"5px 12px", borderRadius:6,
-              border:`1px solid ${C.border}`, background:C.surface, color:C.muted, fontSize:10, cursor:"pointer" }}>HOME</button>
+              border:`1px solid ${C.border}`, background:C.surface, color:C.muted, fontSize: 13, cursor:"pointer" }}>HOME</button>
           )}
         </div>
       </div>
@@ -670,13 +670,13 @@ export default function ExamSimulator() {
         <div>
           {/* Domain bars */}
           <div style={{ background:C.card, border:`1px solid ${C.border}`, borderRadius:12, padding:"14px 16px", marginBottom:12, boxShadow:"0 1px 6px #1A1F2E0A" }}>
-            <div style={{ fontSize:10, color:C.muted, letterSpacing:"0.08em", marginBottom:10 }}>EXAM DOMAINS</div>
+            <div style={{ fontSize: 13, color:C.muted, letterSpacing:"0.08em", marginBottom:10 }}>EXAM DOMAINS</div>
             <div style={{ display:"flex", height:8, borderRadius:4, overflow:"hidden", marginBottom:8 }}>
               {DOMAIN_META.map(dm => <div key={dm.id} style={{ width:`${dm.pct}%`, background:dm.col }} />)}
             </div>
             <div style={{ display:"flex", gap:10, flexWrap:"wrap" }}>
               {DOMAIN_META.map(dm => (
-                <div key={dm.id} style={{ display:"flex", alignItems:"center", gap:4, fontSize:10, color:dm.col }}>
+                <div key={dm.id} style={{ display:"flex", alignItems:"center", gap:4, fontSize: 13, color:dm.col }}>
                   <div style={{ width:8, height:8, borderRadius:2, background:dm.col }} />
                   {dm.full} {dm.pct}%
                 </div>
@@ -686,10 +686,10 @@ export default function ExamSimulator() {
 
           {/* Config */}
           <div style={{ background:C.card, border:`1px solid ${C.border}`, borderRadius:12, padding:"14px 16px", marginBottom:12, boxShadow:"0 1px 6px #1A1F2E0A" }}>
-            <div style={{ fontSize:10, color:C.muted, letterSpacing:"0.08em", marginBottom:12 }}>EXAM CONFIGURATION</div>
+            <div style={{ fontSize: 13, color:C.muted, letterSpacing:"0.08em", marginBottom:12 }}>EXAM CONFIGURATION</div>
 
             <div style={{ marginBottom:10 }}>
-              <div style={{ fontSize:11, color:C.muted, marginBottom:6 }}>Mode</div>
+              <div style={{ fontSize: 14, color:C.muted, marginBottom:6 }}>Mode</div>
               <div style={{ display:"flex", gap:6, flexWrap:"wrap" }}>
                 {[
                   { type:"full",     label:"Full exam",    q:50,  note:"All domains" },
@@ -702,9 +702,9 @@ export default function ExamSimulator() {
                       borderColor: examConfig.type===m.type ? C.b : C.border,
                       background: examConfig.type===m.type ? C.b+"14" : C.surface,
                       color: examConfig.type===m.type ? C.b : C.muted,
-                      fontSize:11, cursor:"pointer", textAlign:"left" }}>
+                      fontSize: 14, cursor:"pointer", textAlign:"left" }}>
                     <div style={{ fontWeight:600 }}>{m.label}</div>
-                    <div style={{ fontSize:9, opacity:.7 }}>{m.q}Q · {m.note}</div>
+                    <div style={{ fontSize: 12, opacity:.7 }}>{m.q}Q · {m.note}</div>
                   </button>
                 ))}
               </div>
@@ -712,7 +712,7 @@ export default function ExamSimulator() {
 
             {examConfig.type === "domain" && (
               <div style={{ marginBottom:10 }}>
-                <div style={{ fontSize:11, color:C.muted, marginBottom:6 }}>Domain filter</div>
+                <div style={{ fontSize: 14, color:C.muted, marginBottom:6 }}>Domain filter</div>
                 <div style={{ display:"flex", gap:5, flexWrap:"wrap" }}>
                   {DOMAIN_META.map(dm => (
                     <button key={dm.id} onClick={() => setExamConfig(p=>({...p,domain:dm.id}))}
@@ -720,7 +720,7 @@ export default function ExamSimulator() {
                         borderColor: examConfig.domain===dm.id ? dm.col : C.border,
                         background: examConfig.domain===dm.id ? dm.col+"14" : C.surface,
                         color: examConfig.domain===dm.id ? dm.col : C.muted,
-                        fontSize:10, cursor:"pointer" }}>
+                        fontSize: 13, cursor:"pointer" }}>
                       {dm.label}: {dm.full.split(" ").slice(0,2).join(" ")}
                     </button>
                   ))}
@@ -735,28 +735,28 @@ export default function ExamSimulator() {
                 <div style={{ width:14, height:14, borderRadius:"50%", background:aiEnabled?C.p:C.dim,
                   position:"absolute", top:2, left:aiEnabled?18:2, transition:"left .2s" }} />
               </div>
-              <span style={{ fontSize:11, color:C.muted }}>AI-generated questions {aiEnabled?"ON":"OFF"}</span>
-              {aiEnabled && <span style={{ fontSize:9, color:C.p, background:C.p+"14", padding:"1px 6px", borderRadius:4 }}>Unlimited variety</span>}
+              <span style={{ fontSize: 14, color:C.muted }}>AI-generated questions {aiEnabled?"ON":"OFF"}</span>
+              {aiEnabled && <span style={{ fontSize: 12, color:C.p, background:C.p+"14", padding:"1px 6px", borderRadius:4 }}>Unlimited variety</span>}
             </div>
           </div>
 
           <button onClick={() => buildExam(examConfig)}
             style={{ width:"100%", padding:"13px 0", borderRadius:10, border:`1.5px solid ${C.b}`,
-              background:C.b, color:"#FFFFFF", fontSize:14, fontWeight:700, cursor:"pointer",
+              background:C.b, color:"#FFFFFF", fontSize: 17, fontWeight:700, cursor:"pointer",
               letterSpacing:"0.04em", transition:"all .15s", boxShadow:`0 2px 12px ${C.b}44` }}>
             START EXAM →
           </button>
 
           {/* Quick topic practice */}
           <div style={{ marginTop:14, background:C.card, border:`1px solid ${C.border}`, borderRadius:12, padding:"14px 16px", boxShadow:"0 1px 6px #1A1F2E0A" }}>
-            <div style={{ fontSize:10, color:C.muted, letterSpacing:"0.08em", marginBottom:10 }}>QUICK PRACTICE BY TOPIC</div>
+            <div style={{ fontSize: 13, color:C.muted, letterSpacing:"0.08em", marginBottom:10 }}>QUICK PRACTICE BY TOPIC</div>
             <div style={{ display:"flex", flexWrap:"wrap", gap:5 }}>
               {TOPIC_MAP.map(({ domain, topic }) => {
                 const dm = DOMAIN_META.find(d => d.id === domain);
                 return (
                   <button key={topic} onClick={() => buildExam({ type:"topic", domain, qCount:5, topic })}
                     style={{ padding:"5px 10px", borderRadius:6, border:`1px solid ${dm.col}33`,
-                      background:dm.col+"0A", color:dm.col, fontSize:10, cursor:"pointer" }}>
+                      background:dm.col+"0A", color:dm.col, fontSize: 13, cursor:"pointer" }}>
                     {topic}
                   </button>
                 );
@@ -771,7 +771,7 @@ export default function ExamSimulator() {
         <div>
           {/* Progress */}
           <div style={{ marginBottom:12 }}>
-            <div style={{ display:"flex", justifyContent:"space-between", marginBottom:5, fontSize:10, color:C.muted }}>
+            <div style={{ display:"flex", justifyContent:"space-between", marginBottom:5, fontSize: 13, color:C.muted }}>
               <span {...s.mono}>Question {currentQ+1} of {questions.length}</span>
               <span>{results.filter(Boolean).length} correct</span>
             </div>
